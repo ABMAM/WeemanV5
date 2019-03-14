@@ -37,7 +37,7 @@ for l in f :
  f2.write(l.replace("[<h1>" , ""))
 f.close()
 f2.close()
-f3 = open("NewProxy.txt" ,"w")
+f3 = open("AliDavis.txt" ,"w")
 f2 =open("ip2.txt" ,"r")
 for i in f2 :
  f3.write(i.replace("</h1>]" , ""))
@@ -45,7 +45,7 @@ f3.close()
 f2.close()
 os.remove("ip2.txt")
 os.remove("ip3.txt")
-f4 = open("NewProxy.txt" ,"r")
+f4 = open("AliDavis.txt" ,"r")
 
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
