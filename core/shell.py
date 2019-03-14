@@ -33,7 +33,7 @@ def print_startup():
     print("\033[01;31m")
     sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
     print("\033[00m")
-    sys.stdout.write("\t  .:[ Weeman last version (5) ]:.")
+    sys.stdout.write("\t  .:[ Weeman last version (5) ]:. \n")
 
 def profile_getkey(profile_file, key):
     try:
